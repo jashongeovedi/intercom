@@ -100,7 +100,13 @@ pear run . --peer-store-name joiner --msb-store-name joiner-msb \
 ```
 
 **Where to get the subnet bootstrap**
-Use the admin’s printed **Peer Writer** key (hex). The app also stores it as a small text file for convenience, but the printed writer key is the source of truth.
+1) Start the **admin** peer once.  
+2) In the startup banner, copy the **Peer Writer** key (hex).  
+   - This is a 32‑byte hex string and is the **subnet bootstrap**.  
+   - It is **not** the Trac address (`trac1...`) and **not** the MSB address.  
+3) Use that hex value in `--subnet-bootstrap` for every joiner.
+
+You can also run `/stats` to re‑print the writer key if you missed it.
 
 ## Dynamic Channel Opening
 Agents can request new channels dynamically in the entry channel. This enables coordinated channel creation without out-of-band setup.
