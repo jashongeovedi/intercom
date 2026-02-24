@@ -19,6 +19,12 @@ References: https://www.moltbook.com/post/9ddd5a47-4e8d-4f01-9908-774669a11c21 a
   - `/tx --command '{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}'`
 - Unique query command:
   - `/tx --command "trace_delivery_lane"`
+- Proof artifacts:
+  - `proof/run.log`
+  - `proof/run-screenshot.png`
+  - `proof/command-mapping.log`
+  - `proof/tx-sim.log`
+  - `proof/README.md`
 - This fork intentionally avoids generic `do_something` / `read_key` command naming.
 
 ## Entry Channel (Global Rendezvous)

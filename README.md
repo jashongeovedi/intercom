@@ -35,6 +35,7 @@ Follow the steps in `SKILL.md` to install dependencies, run the admin peer, and 
   - `proof/run.log`
   - `proof/run-screenshot.png`
   - `proof/command-mapping.log`
+  - `proof/tx-sim.log`
   - `proof/README.md`
 
 ## Architecture (ASCII map)

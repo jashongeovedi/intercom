@@ -1,0 +1,12 @@
+﻿bridge_url: ws://127.0.0.1:49343
+hello: requiresAuth=true
+auth_ok
+simulation_command: /tx --command '{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}' --sim 1
+query_command: /tx --command "trace_delivery_lane" --sim 1
+cli_result: command=/tx --command '{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}' --sim 1
+cli_ok: true
+output: delivery lane updated {"op":"promote_delivery_lane","status":"MVP ready","note":"first demo","updatedBy":"c6a8a63dc0a96eb1a632d19b9d75d357cb7b805a2612c282f6b5e501e6c1a444","updatedAt":null}
+cli_result: command=/tx --command "trace_delivery_lane" --sim 1
+cli_ok: true
+output: delivery_lane_status: null
+
