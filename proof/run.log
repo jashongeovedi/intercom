@@ -1,0 +1,42 @@
+[sidechannel] welcome required for non-entry channels; entry "0000intercom" is open and does not require owner/welcome.
+=============== STARTING MSB ===============
+State initialization...
+Network initialization...
+
+#####################################################################################
+# MSB Address:    trac1n9s3kczkfycur2dy07fep737dfunhhg7w23vsj69feeazfrrcnesumcs2e  #
+# MSB Writer:     9a1636047f9a05d6d69a1c9d477f7bd31be6f654413558ae9b44abe5218e58ee #
+#####################################################################################
+Channel: 0000trac0network0msb0mainnet0000
+isIndexer: false
+isWriter: false
+MSB Unsigned Length: 19719
+MSB Signed Length: 19719
+Balance: 0
+=============== STARTING PEER ===============
+
+######################################################################################
+# Peer Address:     b4f7ccccfc192b0301b108f61ad352a26e281a93e5a3b0263b75a175694cde9c #
+# Peer Writer:      4dad0acd3ae4a319d40d0c16632ecc62627c110d46e5d1adff119797c35353e5 #
+######################################################################################
+
+isIndexer: true
+isWriter: true
+
+
+====================INTERCOM ====================
+MSB network bootstrap: acbc3a4344d3a804101d40e53db1dda82b767646425af73599d4cd6577d69685
+MSB channel: 0000trac0network0msb0mainnet0000
+MSB store: stores\proof-admin-msb
+Peer store: stores\proof-admin
+Peer DHT bootstrap nodes: 127.0.0.1:49737
+Peer subnet bootstrap: 4dad0acd3ae4a319d40d0c16632ecc62627c110d46e5d1adff119797c35353e5
+Peer subnet channel: proof-intercom-status
+Peer pubkey (hex): b4f7ccccfc192b0301b108f61ad352a26e281a93e5a3b0263b75a175694cde9c
+Peer trac address (bech32m): trac1knmuen8ury4sxqd3prmp456j5fhzsx5nuk3mqf3mwksh262vm6wqfj3u5d
+Peer writer key (hex): 4dad0acd3ae4a319d40d0c16632ecc62627c110d46e5d1adff119797c35353e5
+Sidechannel entry: 0000intercom
+Sidechannel extras: proof-room
+================================================================
+
+Sidechannel: ready

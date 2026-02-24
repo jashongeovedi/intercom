@@ -150,12 +150,9 @@ class SampleProtocol extends Protocol{
 
         Please study the superclass of this Protocol and Protocol.api to learn more.
         */
-        if(command === 'something'){
-            // type points at the "storeSomething" function in the contract.
-            obj.type = 'storeSomething';
-            // value can be null as there is no other payload, but the property must exist.
+        if (command === 'trace_delivery_lane') {
+            obj.type = 'readDeliveryLaneStatus';
             obj.value = null;
-            // return the payload to be used in your contract
             return obj;
         } else if (command === 'read_snapshot') {
             obj.type = 'readSnapshot';
@@ -175,29 +172,31 @@ class SampleProtocol extends Protocol{
             what to do (the op) then we pass the parsed object to the value.
             the accepted json string can be executed as tx like this:
 
-            /tx --command '{ "op" : "do_something", "some_key" : "some_data" }'
+            /tx --command '{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}'
 
             Of course we can simulate this, as well:
 
-            /tx --command '{ "op" : "do_something", "some_key" : "some_data" }' --sim 1
+            /tx --command '{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}' --sim 1
             */
             const json = this.safeJsonParse(command);
-            if(json.op !== undefined && json.op === 'do_something'){
-                obj.type = 'submitSomething';
-                obj.value = json;
-                return obj;
-            } else if (json.op !== undefined && json.op === 'read_key') {
-                obj.type = 'readKey';
-                obj.value = json;
-                return obj;
-            } else if (json.op !== undefined && json.op === 'read_chat_last') {
-                obj.type = 'readChatLast';
-                obj.value = null;
-                return obj;
-            } else if (json.op !== undefined && json.op === 'read_timer') {
-                obj.type = 'readTimer';
-                obj.value = null;
-                return obj;
+            if (json && typeof json === 'object' && json.op !== undefined) {
+                if (json.op === 'promote_delivery_lane') {
+                    obj.type = 'promoteDeliveryLaneStatus';
+                    obj.value = json;
+                    return obj;
+                } else if (json.op === 'trace_delivery_lane') {
+                    obj.type = 'readDeliveryLaneStatus';
+                    obj.value = null;
+                    return obj;
+                } else if (json.op === 'read_chat_last') {
+                    obj.type = 'readChatLast';
+                    obj.value = null;
+                    return obj;
+                } else if (json.op === 'read_timer') {
+                    obj.type = 'readTimer';
+                    obj.value = null;
+                    return obj;
+                }
             }
         }
         // return null if no case matches.
@@ -213,9 +212,11 @@ class SampleProtocol extends Protocol{
     async printOptions(){
         console.log(' ');
         console.log('- Sample Commands:');
-        console.log("- /print | use this flag to print some text to the terminal: '--text \"I am printing\"");
-        console.log('- /get --key "<key>" [--confirmed true|false] | reads subnet state key (confirmed defaults to true).');
+        console.log("- /print | use this flag to print some text to the terminal: '--text \"I am printing\"'.");
+        console.log('- /get --key "<key>" [--confirmed true|false] | read subnet state key (confirmed defaults to true).');
         console.log('- /msb | prints MSB txv + lengths (local MSB node view).');
+        console.log('- /tx --command \'{"op":"promote_delivery_lane","status":"MVP ready","note":"first demo"}\' | update delivery-lane status card.');
+        console.log('- /tx --command "trace_delivery_lane" | print latest delivery-lane status card.');
         console.log('- /tx --command "read_chat_last" | prints last chat message captured by contract.');
         console.log('- /tx --command "read_timer" | prints current timer feature value.');
         console.log('- /sc_join --channel "<name>" | join an ephemeral sidechannel (no autobase).');
